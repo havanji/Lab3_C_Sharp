@@ -48,7 +48,7 @@ class Car
     //print
     public void Print()
     {
-        Console.WriteLine($"Company name: {Car.CompanyName} Name: {this.name} + " +
+        Console.WriteLine($"Company name: {Car.CompanyName} Name: {this.name} " +
             $"Model: {this.model} Color: {this.Color} Price: {this.price}");
     }
 
