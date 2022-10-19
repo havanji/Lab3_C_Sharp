@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Security.Cryptography;
 
 class Car
 {
@@ -15,12 +16,12 @@ class Car
         set { color = value; }
     }
 
-    //deafult
+    //За умовчуванням
     public Car() : this("Name", "Model", "White", 10000)
     {
     }
 
-    //parametrs
+    //Конструктор з параметрами
     public Car(string name, string model, string color, int price)
     {
         this.name = name;
@@ -29,7 +30,7 @@ class Car
         this.price = price;
     }
 
-    //input
+    //Ввід даних про авто
     public void Input()
     {
         Console.OutputEncoding = System.Text.Encoding.Unicode;
@@ -45,14 +46,34 @@ class Car
         this.price = Convert.ToDouble(Console.ReadLine());
     }
 
-    //print
+    //Вивід даних про авто
     public void Print()
     {
+        Console.OutputEncoding = System.Text.Encoding.Unicode;
+        Console.InputEncoding = System.Text.Encoding.Unicode;
+
         Console.WriteLine($"Company name: {Car.CompanyName} Name: {this.name} " +
             $"Model: {this.model} Color: {this.Color} Price: {this.price}");
     }
 
-    //+ x% to price
+    //Перевірка чи збігається марка та колір вказаних автомобілів
+    public static bool operator ==(Car car1, Car car2)
+    {
+        return (car1.name == car2.name) && (car1.price == car2.price);
+    }
+    public static bool operator !=(Car car1, Car car2)
+    {
+        return (car1.name != car2.name) && (car1.price != car2.price);
+    }
+
+    //Вивід данних про авто за допомогою ToString
+    public override string ToString()
+    {
+        return $"Company name: {Car.CompanyName} Name: {this.name} " +
+            $"Model: {this.model} Color: {this.Color} Price: {this.price}";
+    }
+
+    //додає x% до ціни автомобіля
     public void ChangePrice(double x)
     {
         price += price * x / 100;
