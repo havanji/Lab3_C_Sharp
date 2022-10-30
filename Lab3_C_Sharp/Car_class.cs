@@ -17,7 +17,7 @@ class Car
     }
 
     //За умовчуванням
-    public Car() : this("Name", "Model", "White", 10000)
+    public Car():this("Name", "Model", "White", 10000)
     {
     }
 
